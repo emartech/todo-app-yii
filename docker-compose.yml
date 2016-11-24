@@ -1,8 +1,17 @@
 version: '2'
 services:
   web:
-    image: php:7.0-apache
+    build: ./docker/apache
     ports:
-     - "80:80"
+      - "80:80"
     volumes:
-     - ./www:/var/www/html
+      - ./www:/var/www/html
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      - /var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
