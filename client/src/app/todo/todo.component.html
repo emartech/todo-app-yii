@@ -1,3 +1,13 @@
 <input #newtodo /><button (click)='addTodo(newtodo.value)'>Add Todo</button>
+
 <p></p>
-<div *ngFor="let todo of todos">{{ todo }}</div>
+
+<ul class="todo-list">
+  <li *ngFor="let todoItem of todoItems">
+    <div>
+      <input type="checkbox" (click)="toggleTodo(todoItem)" [checked]="todoItem.completed">
+      <label >{{ todoItem.title }}</label>
+      <button (click)="removeTodo(todoItem)">Remove</button>
+    </div>
+  </li>
+</ul>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../todo.service';
+import { TodoItem } from './todoItem';
 
 @Component({
   selector: 'app-todo',
@@ -9,19 +10,31 @@ import { TodoService } from '../todo.service';
 })
 export class TodoComponent implements OnInit {
 
-  private todos: string[] = [];
+  private todoItems: TodoItem[] = [];
 
   constructor(private todoService: TodoService) {
-    todoService.todos$.subscribe( (todo) => {
-      this.todos.push(todo);
+    todoService.todoItems$.subscribe( (todoItems) => {
+      this.todoItems = todoItems;
     });
+
+    // Creation of starting dummy "database"
+    this.todoService.addFullTodo(new TodoItem("macska1", true));
+    this.todoService.addFullTodo(new TodoItem("macska2", false));
+    this.todoService.addFullTodo(new TodoItem("macska3", true));
   }
 
   ngOnInit() {
   }
 
-  addTodo(newTodo: string) {
-    this.todoService.addTodo(newTodo);
+  addTodo(todoTitle: string) {
+    this.todoService.addTodo(todoTitle);
   }
 
+  toggleTodo(todoItem: TodoItem) {
+    this.todoService.toggleTodo(todoItem);
+  }
+
+  removeTodo(todoItem: TodoItem) {
+    this.todoService.removeTodo(todoItem);
+  }
 }
