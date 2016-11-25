@@ -1,0 +1,3 @@
+<input #newtodo /><button (click)='addTodo(newtodo.value)'>Add Todo</button>
+<p></p>
+<div *ngFor="let todo of todos">{{ todo }}</div>
