@@ -16,3 +16,11 @@ $ docker-compose up
 ```
 
 in the project directory. You need to have [Docker](https://www.docker.com) installed.
+
+## Install Yii dependencies
+In order to pull Yii dependencies, you need to install this asset plugin:
+```
+$ composer global require "fxp/composer-asset-plugin:^1.2.0"
+```
+Now you can run `composer up` in the *server* folder.
+NOTE: This will take a while, be patient! :)
