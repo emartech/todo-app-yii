@@ -27,5 +27,5 @@ NOTE: This will take a while, be patient! :)
 
 ## Client development
 
-Read about this [here].(client/README.md)
+Read about this [here](client/README.md).
 
