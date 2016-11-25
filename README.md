@@ -24,3 +24,8 @@ $ composer global require "fxp/composer-asset-plugin:^1.2.0"
 ```
 Now you can run `composer up` in the *server* folder.
 NOTE: This will take a while, be patient! :)
+
+## Client development
+
+Read about this [here].(client/README.md)
+
