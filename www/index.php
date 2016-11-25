@@ -2,7 +2,7 @@
 
 echo 'Hello world, I have MySQL ';
 
-$db = new mysqli('172.18.0.1', 'root', 'root', 'mysql');
+$db = new mysqli('db', 'root', 'root', 'mysql');
 echo $db->connect_error;
 
 
