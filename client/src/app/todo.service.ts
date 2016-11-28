@@ -1,5 +1,6 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { TodoItem } from './todo/todoItem';
+import { Component, Injectable, EventEmitter } from '@angular/core';
+import { TodoItemFactory } from './misc/todoItemFactory';
+import { TodoItem } from './misc/todoItem';
 
 @Injectable()
 export class TodoService {
@@ -17,30 +18,24 @@ export class TodoService {
     return this._todoItems$;
   }
 
-  addTodo(todoTitle: string) {
-    let newTodoItem = new TodoItem(todoTitle, false)
-    this._todoItems.push(newTodoItem)
-    this.refreshTodoItems()
+  addTodo(todoTitle: string, todoCompleted = false) {
+    let newTodoItem = TodoItemFactory.createTodoItem(todoTitle, todoCompleted);
+    this._todoItems.push(newTodoItem);
+    this.refreshTodoItems();
   }
 
   toggleTodo(todoItem: TodoItem) {
-    todoItem.flipCompleted();
-    this.refreshTodoItems()
+    todoItem.completed = !todoItem.completed;
+    this.refreshTodoItems();
   }
 
   removeTodo(todoItem: TodoItem) {
-    let todoItemIndex = this._todoItems.indexOf(todoItem)
+    let todoItemIndex = this._todoItems.indexOf(todoItem);
     this._todoItems.splice(todoItemIndex, 1);
     this.refreshTodoItems();
   }
 
   refreshTodoItems() {
     this._todoItems$.emit(this._todoItems);
-  }
-
-  // For dummy starting "database"
-  addFullTodo(todoItem: TodoItem) {
-    this._todoItems.push(todoItem)
-    this.refreshTodoItems()
   }
 }

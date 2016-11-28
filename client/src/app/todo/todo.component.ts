@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../todo.service';
-import { TodoItem } from './todoItem';
+import { TodoItem } from '../misc/todoItem';
 
 @Component({
   selector: 'app-todo',
@@ -18,9 +18,9 @@ export class TodoComponent implements OnInit {
     });
 
     // Creation of starting dummy "database"
-    this.todoService.addFullTodo(new TodoItem("macska1", true));
-    this.todoService.addFullTodo(new TodoItem("macska2", false));
-    this.todoService.addFullTodo(new TodoItem("macska3", true));
+    this.todoService.addTodo("macska1", true);
+    this.todoService.addTodo("macska2", false);
+    this.todoService.addTodo("macska3", true);
   }
 
   ngOnInit() {
