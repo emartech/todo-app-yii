@@ -33,11 +33,14 @@ $config = [
 ];
 
 if (YII_ENV_DEV) {
+    $test_db = require(__DIR__ . '/test_db.php');
+
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
     ];
+    $config['components']['test-db'] = $test_db;
 }
 
 return $config;
